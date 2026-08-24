@@ -1,0 +1,45 @@
+# ── Media (large binaries, regenerated locally) ──
+*.mp4
+*.wav
+*.mkv
+*.mov
+voiceover*.wav
+seg_*.wav
+_blank_*.mp4
+_clip_*.mp4
+_video_only.mp4
+
+# ── Environment / secrets ──
+.env
+*.env
+voices/
+00_assets/voices/
+
+# ── Textbook / source PDF (copyright, not shipped) ──
+*.pdf
+书籍/
+books/
+
+# ── Python ──
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+*.egg-info/
+
+# ── Manim cache ──
+media/
+**/media/
+
+# ── OS / editor noise ──
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+
+# ── Node (if using Remotion/HyperFrames) ──
+node_modules/
+dist/
+.build/
