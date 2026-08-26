@@ -1,10 +1,12 @@
-# assets/
+# 本地素材目录
 
-Shared, non-private assets for the video project.
+此目录用于存放不应提交到仓库的制作素材。推荐结构如下：
 
-Recommended contents (all user-supplied, git-ignored if large):
-- `fonts/` — e.g. a CJK font (Microsoft YaHei / Noto Sans CJK) and a mono font (Consolas / JetBrains Mono) for code & formulas.
-- `voices/` — **DO NOT COMMIT.** Your reference voice `.wav` goes here locally; it is git-ignored. Point `REFERENCE_VOICE_WAV` in `.env` at it.
-- `bgm/` — optional background music ( royalty-free only ).
+```text
+assets/
+├── fonts/       # 已获授权的 CJK 与等宽字体
+├── voices/      # 参考音频，已由 .gitignore 排除
+└── bgm/         # 已获授权的背景音乐
+```
 
-This folder is intentionally empty in the repo. Populate it on your own machine; nothing here is required to understand the pipeline.
+仓库不提供这些文件。运行旁白生成前，在 `.env` 的 `REFERENCE_AUDIO` 中填写音频位置；需要在场景中指定字体时，使用本机已安装或已获授权的字体名称。

@@ -1,5 +1,5 @@
-# Reference: Chapter 2 (Perceptron) Manim animation — worked example.
-# Privacy-sanitized. Uses the 3B1B palette from AGENTS.md.
+# 第二章（感知机）Manim 动画示例。
+# 使用项目视觉规范中的颜色定义。
 
 # -*- coding: utf-8 -*-
 """感知机视频 v2 — 3Blue1Brown风格Manim动画（详细版）"""

@@ -2,9 +2,8 @@
 """
 Final assembly template (ffmpeg).
 
-Privacy-safe: no hardcoded personal paths. Configure via .env:
-  FFMPEG, FFPROBE  — executables (default "ffmpeg"/"ffprobe")
-  PROJECT_ROOT     — chapter working directory (where seg_*.wav live)
+Configure the ffmpeg executable names in .env when needed. The chapter
+directory defaults to the directory containing this copied template.
 
 Behavior:
   - Reads each seg_NN.wav duration via ffprobe.
@@ -17,12 +16,13 @@ Usage:
   python assemble.py
 """
 import subprocess, os, glob
+from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
 
-ROOT = os.environ.get("PROJECT_ROOT", ".")
-os.chdir(ROOT)
+CHAPTER_DIR = Path(os.environ.get("CHAPTER_DIR", Path(__file__).resolve().parent)).resolve()
+os.chdir(CHAPTER_DIR)
 FFMPEG = os.environ.get("FFMPEG", "ffmpeg")
 FFPROBE = os.environ.get("FFPROBE", "ffprobe")
 MEDIA = os.environ.get("MEDIA_DIR", "media/videos/scenes/1080p30")

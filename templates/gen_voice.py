@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Voice generation template (VoxCPM2).
+VoxCPM2 narration generation template.
 
-Privacy-safe: no hardcoded personal paths. Configure via .env (see .env.example):
-  VOXCPM_PATH        — folder containing the voxcpm/ package
-  REFERENCE_VOICE_WAV— your own reference voice .wav (never committed)
-  DEVICE             — cuda / cpu
+Configuration is loaded from .env (see .env.example):
+  VOXCPM_PATH      optional local checkout containing the voxcpm package
+  REFERENCE_AUDIO  reference WAV used for narration generation
+  DEVICE           cuda / cuda:0 / cpu
 
 Usage:
   1. Fill SEGMENTS with your narration, each < 280 Chinese chars.
@@ -13,6 +13,7 @@ Usage:
   3. Produces seg_NN.wav + voiceover.wav and a timing table for assemble.py.
 """
 import sys, os, io
+from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
 import numpy as np
@@ -20,13 +21,14 @@ import soundfile as sf
 from dotenv import load_dotenv
 
 load_dotenv()
+OUTPUT_DIR = Path(__file__).resolve().parent
 
-# Make the VoxCPM2 package importable (set VOXCPM_PATH in .env)
+# Make a local VoxCPM2 checkout importable when configured.
 VOXCPM_PATH = os.environ.get("VOXCPM_PATH", "")
 if VOXCPM_PATH and VOXCPM_PATH not in sys.path:
     sys.path.insert(0, VOXCPM_PATH)
 
-REF_AUDIO = os.environ["REFERENCE_VOICE_WAV"]   # must be set in .env
+REF_AUDIO = os.environ["REFERENCE_AUDIO"]
 DEVICE = os.environ.get("DEVICE", "cuda")
 
 # ---------------------------------------------------------------------------
@@ -63,11 +65,11 @@ for i, text in enumerate(SEGMENTS):
     all_wavs.append(wav)
     dur = len(wav) / sr
     all_durs.append(dur)
-    sf.write(f"seg_{i:02d}.wav", wav, sr)
+    sf.write(OUTPUT_DIR / f"seg_{i:02d}.wav", wav, sr)
     print(f"  -> {dur:.2f}s")
 
 full = np.concatenate(all_wavs)
-sf.write("voiceover.wav", full, sr)
+sf.write(OUTPUT_DIR / "voiceover.wav", full, sr)
 total = len(full) / sr
 print(f"\n=== Done ===\nvoiceover.wav = {total:.2f}s at {sr}Hz")
 

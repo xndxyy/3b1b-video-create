@@ -1,6 +1,6 @@
-# Skill Recipes (offline summaries)
+# 脚本与动画写作方法
 
-The original author used agent *skills* (khazix-writer, writing-*, humanizer-zh, manim-video, hyperframes). Those live in the agent's skill store, not in this repo. Below are distilled recipes so the AI can reproduce the workflow even without the skills installed. If the user DOES have the skills, prefer invoking them.
+本文件将常用的脚本写作和动画制作方法整理为可直接执行的规则。它们既可手工使用，也可作为 AI 辅助写作时的输入规范。
 
 ## khazix-writer (narrative voice)
 

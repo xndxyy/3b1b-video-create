@@ -1,9 +1,9 @@
-# Reference: Chapter 2 (Perceptron) narration script — worked example.
-# Privacy-sanitized (voice is generic '克隆声音'). Meet word minimums in AGENTS.md.
+# 第二章（感知机）旁白脚本示例
+# 本示例展示脚本与动画提示的组织方式。
 
 # 《感知机》— 3Blue1Brown风格视频脚本（详细版 v2）
 # 基于《深度学习入门：基于Python的理论与实现》第二章
-# 配音：克隆声音风格 | 动画：3B1B暗色+彩色几何
+# 配音：中文旁白 | 动画：暗色画布与彩色几何
 # 目标时长：~12分钟 | 12段 | ~2800字
 
 ---
